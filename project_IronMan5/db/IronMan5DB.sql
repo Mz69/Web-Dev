@@ -76,3 +76,5 @@ ALTER TABLE `iron_product`
   
 ALTER TABLE `iron_product`
   MODIFY `i_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+ALTER TABLE `iron_login` ADD UNIQUE (`i_email`);

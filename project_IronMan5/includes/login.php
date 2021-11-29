@@ -1,38 +1,64 @@
-<!DOCTYPE html>
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
+        session_start();
+        require("../db/db.php");
+        //Prepared statement to fetch appropriate password from database
+		$loginSQL = "SELECT * FROM `iron_login` WHERE i_email = ?";
+		$loginQuery = $dbconn->prepare($loginSQL);
+		$loginQuery->bind_param("s", $_POST["email"]);
+		$loginQuery->execute();
+		$loginResult = $loginQuery->get_result()->fetch_assoc();
+         //Check if email actually exists
+		if(!$loginResult) {
+			header("Location: ../index.php?loginerror=true");
+		}
+        else {
+			//If email exists, check that password is correct
+			if(password_verify($_POST['password'],  $loginResult["i_password"])) {
+				//If correct, log user in by setting session variables
+                //Regenerate session ID to prevent hijacking
+		        session_regenerate_id();
+                
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+                //Set session variables
+				$_SESSION['email'] = $loginResult['i_email'];
 
-        <!-- Boostrap CSS CDN -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-        <!-- Boostrap Login CSS -->
-        <link href="css/login.css" rel="stylesheet">
-
-    </head>
-    <body class="text-center">
-        <form class="form-signin rounded bg-light">
-        <!-- <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+                
+				header("Location: ../index.php?login=true");
+			}
+			//Password was incorrect, redirect with error message
+			else {
+				header("Location: ../index.php?loginerror=true");
+			}	
+		}
+    }
+    //Show login form otherwise
+    else {
+        if(isset($_GET['loginerror'])) {
+            echo "<p id='login-error' class='text-danger'>* Wrong username or password. Please try again.</p>";
+        }
+?>
+<section id="login-form" class="row text-center">
+    <div id="brand-container" class="d-none d-lg-block col-5">
+        <p>Brand Image Here<p>
+    </div>
+    <form method="POST" action="includes/login.php" class="form-signin rounded bg-light col-5 m-auto">
         <h1 class="h3 mb-3 font-weight-normal">User Login</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-            <input type="checkbox" value="remember-me"> Remember me
-            </label>
+        <div class="form-group">
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p> -->
-        </form>
-        <!-- Boostrap JavaScript CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    </body>
-</html>
+        <div class="form-group">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" name="login" class="btn btn-lg btn-primary btn-block my-2" value="1">Sign in</button>
+        </div>
+        <a href="index.php?create=True">Create an account</a>
+    </form>
+
+</section>
+<?php 
+    }
+?>
