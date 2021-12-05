@@ -1,19 +1,20 @@
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['password'] == $_POST['confirm-password']) {
         require("../db/db.php");
-        $createSQL = "INSERT INTO `iron_login` (`i_id`, `i_email`, `i_password`, `i_address`, `i_zip`, `i_province`) VALUES (NULL, ?, ?, ?, ?, ?)";
+        $createSQL = "INSERT INTO `iron_login` (`i_id`, `i_email`, `i_password`, `i_name`, `i_address`, `i_zip`, `i_province`) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
         $createQuery = $dbconn->prepare($createSQL);
 
         $email = cleanUserInput($_POST['email']);
         $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $name = cleanUserInput($_POST['name']);
         $address = cleanUserInput($_POST['address']);
         $zip = cleanUserInput($_POST['zip']);
         $province =  cleanUserInput($_POST['province']);
         
         
-        $createQuery->bind_param("sssss", $email, $hashedPassword, $address, $zip, $province);
+        $createQuery->bind_param("ssssss", $email, $hashedPassword, $name, $address, $zip, $province);
         $createQuery->execute();
-        
+        die();
         header("Location: ../index.php");
     }
     else {

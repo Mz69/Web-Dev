@@ -23,13 +23,18 @@
 
                 //Set session variables
 				$_SESSION['email'] = $loginResult['i_email'];
+                $_SESSION['id'] = $loginResult['i_id'];
+                $_SESSION['name'] = $loginResult['i_name'];
+                $_SESSION['address'] = $loginResult['i_address'];
+                $_SESSION['zip'] = $loginResult['i_zip'];
+                $_SESSION['province'] = $loginResult['i_province'];
 
                 
-				header("Location: ../index.php?login=true");
+				header("Location: ../index.php");
 			}
 			//Password was incorrect, redirect with error message
 			else {
-				header("Location: ../index.php?loginerror=true");
+				header("Location: ../index.php?login&loginerror=true");
 			}	
 		}
     }

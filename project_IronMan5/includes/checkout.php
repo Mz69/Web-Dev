@@ -1,135 +1,56 @@
+<?php
+  if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['order'])) {
+
+    header("Location: ../index.php?order=True");
+    die();
+  }
+
+  //   $orderSQL = "INSERT INTO `iron_order`(`i_order_id`, `i_cust_id`, `i_order_date`) VALUES (NULL, ?, NULL)";
+  //   $orderQuery = $dbconn->prepare($orderSQL);
+  //   if(isset($_SESSION['id']) {
+  //     $orderQuery->bind_param("i", $_SESSION['id']);
+  //   }
+  //   else {
+  //     $orderQuery->bind_param("i", $_SESSION['id']);
+  //   }
+    
+  // }
+?>
 <div class="container">
   <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Cart</span>
-        <span class="badge badge-secondary badge-pill">3</span>
-      </h4>
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Product name</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$12</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Second product</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$8</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <div>
-            <span class="text-muted">$5</span>
-        </div>
-        </li>     
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <div>
-            <span class="text-muted">$5</span>
-        </div>
-        </li>       
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <div>
-            <span class="text-muted">$5</span>
-        </div>
-        </li>       
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <div>
-            <span class="text-muted">$5</span>
-        </div>
-        </li>       
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <div>
-            <span class="text-muted">$5</span>
-        </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <div>
-            <span class="text-muted">$5</span>
-        </div>
-        </li>       
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <div>
-            <span class="text-muted">$5</span>
-        </div>
-        </li>       
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <div>
-            <span class="text-muted">$5</span>
-        </div>
-        </li>                 
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-          <strong>$20</strong>
-        </li>
-      </ul>
-
-      <!-- <form class="card p-2">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </div>
-      </form> -->
+    <div id="cart" class="col-md-4 order-md-2 mb-4">
+      <!-- Cart contents updated by jQuery-->
     </div>
+    <?php
+      $name = (isset($_SESSION["name"]) ? $_SESSION["name"] : "");
+      $email = (isset($_SESSION["email"]) ? $_SESSION["email"] : "");
+      $address = (isset($_SESSION["address"]) ? $_SESSION["address"] : "");
+      $province = (isset($_SESSION["province"]) ? $_SESSION["province"] : "");
+      $zip = (isset($_SESSION["zip"]) ? $_SESSION["zip"] : "");
+      // if(isset($_SESSION["email"])) {
+        
+      //   $
+      //   $_SESSION['email'] = $loginResult['i_email'];
+      //           $_SESSION['address'] = $loginResult['i_address'];
+      //           $_SESSION['zip'] = $loginResult['i_zip'];
+      //           $_SESSION['province'] = $loginResult['i_province'];
+    ?>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate method="POST" action="includes/checkout.php">
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name"  value="<?php echo $name;?>"required>
             <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid last name is required.
+              Valid name is required.
             </div>
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" value="<?php echo $email;?>">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
@@ -137,33 +58,39 @@
 
         <div class="mb-3">
           <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+          <input type="text" class="form-control" id="address" value="<?php echo $address;?>" required>
           <div class="invalid-feedback">
             Please enter your shipping address.
           </div>
         </div>
-<!-- 
-        <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-        </div> -->
 
         <div class="row">
           <div class="col-md-5 mb-3">
             <label for="country">Country</label>
             <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Choose...</option>
-              <option>United States</option>
+              <option value="">Canada</option>
+              <!-- <option>Canada</option> -->
             </select>
             <div class="invalid-feedback">
               Please select a valid country.
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="state">State</label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <option value="">Choose...</option>
-              <option>California</option>
+            <label for="state">Province</label>
+            <select class="custom-select d-block w-100" id="province" required>
+              <option <?php echo (($province == "BC")? "selected": "");?>>BC</option>
+              <option <?php echo (($province == "AB")? "selected": "");?>>AB</option>
+              <option <?php echo (($province == "NL")? "selected": "");?>>NL</option>
+              <option <?php echo (($province == "PE")? "selected": "");?>>PE</option>
+              <option <?php echo (($province == "NB")? "selected": "");?>>NB</option>
+              <option <?php echo (($province == "NS")? "selected": "");?>>NS</option>
+              <option <?php echo (($province == "QC")? "selected": "");?>>QC</option>
+              <option <?php echo (($province == "ON")? "selected": "");?>>ON</option>
+              <option <?php echo (($province == "MB")? "selected": "");?>>MB</option>
+              <option <?php echo (($province == "SK")? "selected": "");?>>SK</option>
+              <option <?php echo (($province == "YT")? "selected": "");?>>YT</option>
+              <option <?php echo (($province == "NT")? "selected": "");?>>NT</option>
+              <option <?php echo (($province == "NU")? "selected": "");?>>NU</option>
             </select>
             <div class="invalid-feedback">
               Please provide a valid state.
@@ -171,7 +98,7 @@
           </div>
           <div class="col-md-3 mb-3">
             <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required>
+            <input type="text" class="form-control" id="zip" value="<?php echo $zip;?>" required>
             <div class="invalid-feedback">
               Zip code required.
             </div>
@@ -230,7 +157,8 @@
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <button name="order" class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
       </form>
     </div>
   </div>
+  <script src="js/checkout.js"></script>
