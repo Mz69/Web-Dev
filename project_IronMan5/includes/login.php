@@ -2,10 +2,11 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         session_start();
         require("../db/db.php");
+        
         //Prepared statement to fetch appropriate password from database
 		$loginSQL = "SELECT * FROM `iron_login` WHERE i_email = ?";
 		$loginQuery = $dbconn->prepare($loginSQL);
-		$loginQuery->bind_param("s", $_POST["email"]);
+		$loginQuery->bind_param("s", cleanUserInput($_POST["email"]));
 		$loginQuery->execute();
 		$loginResult = $loginQuery->get_result()->fetch_assoc();
          //Check if email actually exists
