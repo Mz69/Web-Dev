@@ -1,20 +1,9 @@
 <?php
+  //Order processing would go here
   if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['order'])) {
-
     header("Location: ../index.php?order=True");
     die();
   }
-
-  //   $orderSQL = "INSERT INTO `iron_order`(`i_order_id`, `i_cust_id`, `i_order_date`) VALUES (NULL, ?, NULL)";
-  //   $orderQuery = $dbconn->prepare($orderSQL);
-  //   if(isset($_SESSION['id']) {
-  //     $orderQuery->bind_param("i", $_SESSION['id']);
-  //   }
-  //   else {
-  //     $orderQuery->bind_param("i", $_SESSION['id']);
-  //   }
-    
-  // }
 ?>
 <div class="container">
   <div class="row">
@@ -27,13 +16,6 @@
       $address = (isset($_SESSION["address"]) ? $_SESSION["address"] : "");
       $province = (isset($_SESSION["province"]) ? $_SESSION["province"] : "");
       $zip = (isset($_SESSION["zip"]) ? $_SESSION["zip"] : "");
-      // if(isset($_SESSION["email"])) {
-        
-      //   $
-      //   $_SESSION['email'] = $loginResult['i_email'];
-      //           $_SESSION['address'] = $loginResult['i_address'];
-      //           $_SESSION['zip'] = $loginResult['i_zip'];
-      //           $_SESSION['province'] = $loginResult['i_province'];
     ?>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>

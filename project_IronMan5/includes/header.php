@@ -23,8 +23,10 @@
         session_start();
         if(!isset($_SESSION["cart"])) {
             $_SESSION['cart'] = array();
+            $_SESSION['cart']["1"] = 2;
+            $_SESSION['cart']["3"] = 3;
         }
-        $_SESSION['cart']["1"] = 2;
+        
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <a class="navbar-brand" href="index.php">Home</a>

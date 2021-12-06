@@ -34,7 +34,7 @@
 			}
 			//Password was incorrect, redirect with error message
 			else {
-				header("Location: ../index.php?login&loginerror=true");
+				header("Location: ../index.php?login=true&loginerror=true");
 			}	
 		}
     }
@@ -48,7 +48,7 @@
     <div id="brand-container" class="d-none d-lg-block col-5">
         <p>Brand Image Here<p>
     </div>
-    <form method="POST" action="includes/login.php" class="form-signin rounded bg-light col-5 m-auto">
+    <form method="POST" action="includes/login.php" class="form-signin rounde col-5 m-auto">
         <h1 class="h3 mb-3 font-weight-normal">User Login</h1>
         <div class="form-group">
             <label for="inputEmail" class="sr-only">Email address</label>
@@ -63,7 +63,6 @@
         </div>
         <a href="index.php?create=True">Create an account</a>
     </form>
-
 </section>
 <?php 
     }

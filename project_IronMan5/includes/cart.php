@@ -58,7 +58,7 @@
                 </div>
                 <div class="d-flex flex-column">
                     <span class="text-muted text-right">$$price</span>
-                    <p id="$key" class="remove-link">Remove</p>
+                    <a id="$key" class="remove-link">Remove</a>
                 </li>
                 ITEM;
             }

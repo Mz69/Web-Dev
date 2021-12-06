@@ -2,7 +2,7 @@ $( document ).ready(function() {
     refreshCart();
 
     //Delegated event listener for each list item button
-    $("#cart").on("click", "p",  function() {
+    $("#cart").on("click", "a",  function() {
         //Select taskId embedded in parent list item ID
         let prodID = $(this).attr('id');
         $.post("includes/cart.php",
