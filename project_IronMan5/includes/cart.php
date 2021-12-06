@@ -30,8 +30,7 @@
         $totalPrice = 0;
         echo <<<CARTHEADER
         <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Cart</span>
-        <span class="badge badge-secondary badge-pill">3</span>
+        <span class="">Cart</span>
         </h4>
         <ul class='list-group mb-3'>
         CARTHEADER;
@@ -52,7 +51,7 @@
 
                 echo <<<ITEM
                 <li class="list-group-item d-flex justify-content-between lh-condensed cart-item">
-                <div>
+                <div class='mr-3'>
                     <h6 class="my-0">$title</h6>
                     <small class="text-muted">$desc</small>
                 </div>

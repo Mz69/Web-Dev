@@ -14,6 +14,9 @@
         else if(isset($_GET["checkout"])) {
             include "includes/checkout.php";
         }
+        else {
+        echo "<h2 class='text-center'>Landing Page</h2>";
+        }
 ?>
  <?php
     require "includes/footer.php";
