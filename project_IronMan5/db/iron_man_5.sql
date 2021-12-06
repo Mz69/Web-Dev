@@ -30,17 +30,44 @@ SET time_zone = "+00:00";
 CREATE TABLE `iron_login` (
   `i_id` int(11) NOT NULL,
   `i_email` varchar(256) NOT NULL,
-  `i_password` varchar(256) NOT NULL
+  `i_password` varchar(256) NOT NULL,
+  `i_name` varchar(128) DEFAULT NULL,
+  `i_address` varchar(128) DEFAULT NULL,
+  `i_zip` varchar(10) DEFAULT NULL,
+  `i_province` char(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `iron_login`
 --
 
-INSERT INTO `iron_login` (`i_id`, `i_email`, `i_password`) VALUES
-(1, 'admin@admin.org', '$2y$10$PdlE1jyxgE00.xhu3gePTukuw/cmyy5BnrVo4CapKtjooMK1fT7Y'),
-(2, 'user@user.org', '$2y$10$L/8TN5MyFROscWSjC1MbsOnmzjQhmIOtpLeQBb3YIDUWXqYlBNSYy');
+INSERT INTO `iron_login` (`i_id`, `i_email`, `i_password`, `i_name`, `i_address`, `i_zip`, `i_province`) VALUES
+(1, 'admin@admin.org', '$2y$10$PdlE1jyxgE00.xhu3gePTukuw/cmyy5BnrVo4CapKtjooMK1fT7Y', NULL, NULL, NULL, NULL),
+(2, 'user@user.org', '$2y$10$L/8TN5MyFROscWSjC1MbsOnmzjQhmIOtpLeQBb3YIDUWXqYlBNSYy', NULL, NULL, NULL, NULL),
+(3, 'rey@theforce.org', '$2y$10$xaFD6I0Y8N1JL11ftf.llOj9krj5opflK4VX8ViD1JHRsg6xuYTm6', 'Rey Skywalker', '1234 Dalhousie', 'B3L2X7', 'NS'),
+(4, 'yoda@theforce.org', '$2y$10$t9z3qP.kVlM9VR7i0LxmJe6QLraITUFkDsOpwaoFwAQHBAQ7t.C6O', 'Yoda yoda', '1234 Housie Dal', 'B3L2X7', 'NS');
 
+--
+-- Indexes for table `iron_login`
+--
+ALTER TABLE `iron_login`
+  ADD PRIMARY KEY (`i_id`),
+  ADD UNIQUE KEY `i_email` (`i_email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `iron_login`
+--
+ALTER TABLE `iron_login`
+  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 -- --------------------------------------------------------
 
 --
