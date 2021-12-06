@@ -1,5 +1,6 @@
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['password'] == $_POST['confirm-password']) {
+        print_r($_POST);
         require("../db/db.php");
         $createSQL = "INSERT INTO `iron_login` (`i_id`, `i_email`, `i_password`, `i_name`, `i_address`, `i_zip`, `i_province`) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
         $createQuery = $dbconn->prepare($createSQL);
@@ -8,26 +9,30 @@
         $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $name = cleanUserInput($_POST['name']);
         $address = cleanUserInput($_POST['address']);
-        $zip = cleanUserInput($_POST['zip']);
+        //Strip spaces in zip
+        $zip = str_replace(' ', '', cleanUserInput($_POST['zip']));
         $province =  cleanUserInput($_POST['province']);
         
         
         $createQuery->bind_param("ssssss", $email, $hashedPassword, $name, $address, $zip, $province);
-        $createQuery->execute();
-        die();
-        header("Location: ../index.php");
+        if($createQuery->execute()) {
+          header("Location: ../index.php");
+        }
+        else {
+          header("Location: ../index.php?create&error=true");
+        }
     }
-    else {
-    // else {
-    //     header("Location: ../index.php?create=true&error=true");
-    //     die();
-    // }
-      // if
-      // echo "<p id='form-error' class='text-danger'>* Not all fields were filled in correctly. Please try again.</p>";
+    else {  
 ?>
 
 <section id="create-account" class="row">
+
   <form method="POST" action="includes/createAccount.php" class="col-8 m-auto">
+  <?php 
+  if (isset($_GET['error'])) {
+    echo "<p id='form-error' class='text-danger'>Not all fields were filled in correctly or a user with that email already exists. Please try again.</p>";
+  }   
+?>
     <div class="row">
       <div class="form-group mb-3 col-12">
         <label for="name">Name</label>
@@ -40,6 +45,7 @@
       <div class="form-group mb-3 col-12">
         <label for="exampleInputPassword1">Password</label>
         <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
+        <span id='password-message'></span>
       </div>
       <div class="form-group mb-3 col-12">
         <label for="exampleInputPassword1">Confirm Password</label>

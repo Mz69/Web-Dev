@@ -10,7 +10,7 @@ $( document ).ready(function() {
     let email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     //At least 5 characters
-    let password = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$/;
+    let password = /^.{5,}$/;
 
     //Min two words, first one contains 2-4 numbers
     let address = /^[0-9]{2,4}(?: +[a-zA-Z]{2,40})+$/;
@@ -25,7 +25,12 @@ $( document ).ready(function() {
     });
 
     $("#password").on('input', function() {
-        checkRegex(this, password);
+        if(!checkRegex(this, password)) {
+            $("#password-message").html("Must be at least 5 characters").css('color', 'red');
+        }
+        else {
+            $("#password-message").html("");
+        }
     });
 
     $("#address").on('input', function() {
@@ -38,7 +43,7 @@ $( document ).ready(function() {
     
     $('#confirm-password').on('input', function () {
         if($('#password').val() == $('#confirm-password').val()) {
-            $('#message').html('Matching').css('color', 'green');
+            $('#message').html('');
             $("#confirm-password").removeClass("is-invalid");
             $("#confirm-password").addClass("is-valid");
         }
@@ -54,10 +59,12 @@ $( document ).ready(function() {
         if(re.test($(element).val())) {
             $(element).removeClass("is-invalid");
             $(element).addClass("is-valid");
+            return true;
         }
         else {
             $(element).removeClass("is-valid");
             $(element).addClass("is-invalid");
+            return false;
         }
     }    
 });
