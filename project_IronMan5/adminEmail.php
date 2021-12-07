@@ -18,6 +18,7 @@
 				<nav class="nav d-flex justify-content-between">
 					<a href="adminProduct.php"><h2><b>Manage Products</b></h2></a>
 					<a href="adminEmail.php"><h2><b>Manage Emails</b></h2></a>
+					<a href="includes/logout.php"><h2><b>Logout</b></h2></a>
 				</nav>
 			</div>
 			<div class="table-wrapper">

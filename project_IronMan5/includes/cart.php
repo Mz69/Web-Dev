@@ -44,7 +44,7 @@
             if(strlen($desc) > 50) {
                 $desc = substr($desc, 0, 50) . "...";
             }
-            $price = $cartResult['i_price'];
+            $price = $cartResult['i_product_price'];
 
             for($i = 0; $i < $value; $i++) {
                 $totalPrice += $price;

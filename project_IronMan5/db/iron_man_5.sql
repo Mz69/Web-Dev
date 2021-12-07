@@ -42,33 +42,9 @@ CREATE TABLE `iron_login` (
 --
 
 INSERT INTO `iron_login` (`i_id`, `i_email`, `i_password`, `i_name`, `i_address`, `i_zip`, `i_province`) VALUES
-(1, 'admin@admin.org', '$2y$10$PdlE1jyxgE00.xhu3gePTukuw/cmyy5BnrVo4CapKtjooMK1fT7Y', NULL, NULL, NULL, NULL),
-(2, 'user@user.org', '$2y$10$L/8TN5MyFROscWSjC1MbsOnmzjQhmIOtpLeQBb3YIDUWXqYlBNSYy', NULL, NULL, NULL, NULL),
-(3, 'rey@theforce.org', '$2y$10$xaFD6I0Y8N1JL11ftf.llOj9krj5opflK4VX8ViD1JHRsg6xuYTm6', 'Rey Skywalker', '1234 Dalhousie', 'B3L2X7', 'NS'),
-(4, 'yoda@theforce.org', '$2y$10$t9z3qP.kVlM9VR7i0LxmJe6QLraITUFkDsOpwaoFwAQHBAQ7t.C6O', 'Yoda yoda', '1234 Housie Dal', 'B3L2X7', 'NS');
-
---
--- Indexes for table `iron_login`
---
-ALTER TABLE `iron_login`
-  ADD PRIMARY KEY (`i_id`),
-  ADD UNIQUE KEY `i_email` (`i_email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `iron_login`
---
-ALTER TABLE `iron_login`
-  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
--- --------------------------------------------------------
+(1, 'admin@admin.org', '$2y$10$L2yF3Huc8miGC61svB1RB.8DdF0Rml6SA68SWL1W.AY2lLU6UBhgC', NULL, NULL, NULL, NULL),
+(2, 'rey@theforce.org', '$2y$10$xaFD6I0Y8N1JL11ftf.llOj9krj5opflK4VX8ViD1JHRsg6xuYTm6', 'Rey Skywalker', '1234 Dalhousie', 'B3L2X7', 'NS'),
+(3, 'yoda@theforce.org', '$2y$10$t9z3qP.kVlM9VR7i0LxmJe6QLraITUFkDsOpwaoFwAQHBAQ7t.C6O', 'Yoda yoda', '1234 Housie Dal', 'B3L2X7', 'NS');
 
 --
 -- Table structure for table `iron_mail`
@@ -119,7 +95,7 @@ CREATE TABLE `iron_product` (
 --
 
 INSERT INTO `iron_product` (`i_product_id`, `i_product_name`, `i_product_desc`, `i_product_price`, `i_product_qt`, `i_product_link`) VALUES
-(1, 'Outdoor Garden Chair', 'Wooden chair made for outdoor purposes.', 35, 50, 'Placeholder'),
+(1, 'Outdoor Garden Chair', 'Wooden chair made for outdoor purposes.', 35, 50, 'example_img1.jpg'),
 (2, 'Tent', 'Outdoor ten for four people.', 115, 15, 'Placeholder'),
 (3, 'Outdoor Table', 'Study metal and glass table made for the outdoors.', 75, 114, 'Placeholder'),
 (4, 'Fake Grass', 'Artificial grass to put down onto your lawn, easy to maintain.', 10, 623, 'Placeholder'),
@@ -159,7 +135,8 @@ INSERT INTO `iron_product_imgs` (`i_product_id`, `i_img_path`) VALUES
 -- Indexes for table `iron_login`
 --
 ALTER TABLE `iron_login`
-  ADD PRIMARY KEY (`i_id`);
+  ADD PRIMARY KEY (`i_id`),
+  ADD UNIQUE KEY `i_email` (`i_email`);
 
 --
 -- Indexes for table `iron_mail`
@@ -181,7 +158,7 @@ ALTER TABLE `iron_product`
 -- AUTO_INCREMENT for table `iron_login`
 --
 ALTER TABLE `iron_login`
-  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `iron_mail`
@@ -194,7 +171,6 @@ ALTER TABLE `iron_mail`
 --
 ALTER TABLE `iron_product`
   MODIFY `i_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

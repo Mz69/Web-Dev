@@ -57,6 +57,10 @@
 	}
 	if (isset($_POST['Edit'])){
 		$prodID = ($_POST['idProd']);
+		$prodDesc = ($_POST['descProd']);
+		$prodPrice = ($_POST['priceProd']);
+		$prodQt = ($_POST['qtProd']);
+		$prodLink = ($_POST['linkProd']);
 ?>
 		<div id="editProductModal">
 			<div class="modal-dialog">
@@ -65,19 +69,19 @@
 						<div class="modal-body">					
 							<div class="form-group">
 								<label>Description</label>
-								<textarea name="editDesc" type="text" class="form-control" required></textarea>
+								<textarea name="editDesc" value="<?php echo $prodDesc;?>"  type="text" class="form-control" required></textarea>
 							</div>
 							<div class="form-group">
 								<label>Price</label>
-								<input name="editPrice" type="text" class="form-control" required>
+								<input name="editPrice" value="<?php echo $prodPrice;?>" type="text" class="form-control" required>
 							</div>
 							<div class="form-group">
 								<label>Quantity</label>
-								<input name="editQuant" type="text" class="form-control" required>
+								<input name="editQuant" value="<?php echo $prodQt;?>" type="text" class="form-control" required>
 							</div>
 							<div class="form-group">
 								<label>Product Pricture Link</label>
-								<input name="editLink" type="text" class="form-control" required>
+								<input name="editLink" value="<?php echo $prodLink;?>" type="text" class="form-control" required>
 							</div>						
 						</div>
 						<div class="modal-footer">

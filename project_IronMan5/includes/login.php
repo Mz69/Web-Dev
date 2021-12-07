@@ -28,9 +28,13 @@
                 $_SESSION['address'] = $loginResult['i_address'];
                 $_SESSION['zip'] = $loginResult['i_zip'];
                 $_SESSION['province'] = $loginResult['i_province'];
-
-                
-				header("Location: ../index.php");
+				
+				if(1 == $_SESSION['id']){
+					header("Location: ../adminProduct.php");
+				}
+                else{
+					header("Location: ../index.php");
+				}
 			}
 			//Password was incorrect, redirect with error message
 			else {
