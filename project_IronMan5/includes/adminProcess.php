@@ -25,6 +25,7 @@
 			$qt = ($_POST['editQuant']);
 			$link = ($_POST['editLink']);
 			$dbconn->query("UPDATE `iron_product` SET `i_product_desc`='$desc',`i_product_price`='$price', `i_product_qt`='$qt', `i_product_link`='$link' WHERE `i_product_id` = '$id'");
+			$dbconn->query("UPDATE `iron_product_imgs` SET `i_img_path`='$link' WHERE `i_product_id` = '$id'");
 			header("Location: ../adminProduct.php");
 		}
 	}
@@ -47,6 +48,7 @@
 		$qt = ($_POST['addQuant']);
 		$link = ($_POST['addLink']);
 		$dbconn->query("INSERT INTO `iron_product`(`i_product_name`, `i_product_desc`, `i_product_price`, `i_product_qt`, `i_product_link`) VALUES ('$name','$desc','$price','$qt','$link')");
+		$dbconn->query("INSERT INTO `iron_product_imgs`(`i_product_id`, `i_img_path`) VALUES(LAST_INSERT_ID(), '$link')");
 		header("Location: ../adminProduct.php");
 	}
 	

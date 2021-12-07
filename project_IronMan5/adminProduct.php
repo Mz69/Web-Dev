@@ -19,6 +19,7 @@
 				<nav class="nav d-flex justify-content-between">
 					<a href="adminProduct.php"><h2><b>Manage Products</b></h2></a>
 					<a href="adminEmail.php"><h2><b>Manage Emails</b></h2></a>
+					<a href="includes/logout.php"><h2><b>Logout</b></h2></a>
 				</nav>
 			</div>
 			<div class="table-wrapper">
@@ -63,6 +64,10 @@
 												<input type="submit" name="Edit" class="btn btn-success" value="Edit">
 												<input type="submit" name="DeleteProd" class="btn btn-danger" value="Delete">
 												<input type="hidden" name="idProd" value="<?php echo $row["i_product_id"]; ?>">
+												<input type="hidden" name="descProd" value="<?php echo $row["i_product_desc"]; ?>">
+												<input type="hidden" name="priceProd" value="<?php echo $row["i_product_price"]; ?>">
+												<input type="hidden" name="qtProd" value="<?php echo $row["i_product_qt"]; ?>">
+												<input type="hidden" name="linkProd" value="<?php echo $row["i_product_link"]; ?>">
 											</th>
 										</tr>
 									</form>
