@@ -60,4 +60,13 @@
 		$dbconn->query("INSERT INTO `iron_mail`(`i_mail_recipient_email`, `i_mail_sender_email`, `i_mail_subject`, `i_mail_text`) VALUES ('$recipient', '$sender', '$subject', '$content')");
 		header("Location: ../adminEmail.php");
 	}
+	
+	if (isset($_POST['submit-contact'])){
+		$sender = ($_POST['e-mail']);
+		$subject = ($_POST['subject']);
+		$content = ($_POST['message']);
+		$recipient = "admin@admin.org";
+		$dbconn->query("INSERT INTO `iron_mail`(`i_mail_recipient_email`, `i_mail_sender_email`, `i_mail_subject`, `i_mail_text`) VALUES ('$recipient', '$sender', '$subject', '$content')");
+		header("Location: ../contactform.php");
+	}
 ?>
