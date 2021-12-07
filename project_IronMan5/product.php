@@ -85,15 +85,15 @@
             </div>
 
             <div id="add2cart">
-                <form method="POST">
-                    <div id="num-control">
-                        <button onclick="numChange(-1)">-</button>
+                <div id="num-control">
+                    <button onclick="numChange(-1)">-</button>
+                    <form method="POST" id="add-form">
                         <input id="num-purchase" name="numberPurchase" value="1">
-                        <button onclick="numChange(1)">+</button>
-                    </div>
+                    </form>
+                    <button onclick="numChange(1)">+</button>
+                </div>
                     
-                    <button id="btn-add2cart">Add to Cart</button>
-                </form>
+                <button type="submit" form="add-form" id="btn-add2cart">Add to Cart</button>
 
             </div>
         </div>

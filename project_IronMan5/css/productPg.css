@@ -114,16 +114,16 @@
     align-items: center;
 }
 
-#add2cart > form {
+#add2cart {
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
+    border: 1px solid;
 }
 
 #num-control {
     display: flex;
     justify-content: center;
-    border: 1px solid;
 }
 
 #num-control > button {
@@ -132,7 +132,7 @@
     border: none;
 }
 
-#num-control > input{
+#num-control > form > input{
     height: 50px;
     width: 100px;
     border: none;
