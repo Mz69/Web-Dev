@@ -11,7 +11,7 @@
         <a href="#product-features">Features</a>
         <a href="#product-specs">Specs</a>
         <a href="#reviews">Reviews</a>
-        <a>Cart</a>
+        <a href="contactform.php">Contact us</a>
     </div>
 
     <body>
