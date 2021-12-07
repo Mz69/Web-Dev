@@ -144,6 +144,10 @@
     border: 1px solid;
 }
 
+#footer {
+    float: left;
+}
+
 @media screen and (max-width: 1200px){
     #img-slider {
         width: 100%;
