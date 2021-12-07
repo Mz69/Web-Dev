@@ -9,7 +9,6 @@
         <a><img></a>
         <a href="#product_intro_img">Overview</a>
         <a href="#product-features">Features</a>
-        <a href="#product-specs">Specs</a>
         <a href="#reviews">Reviews</a>
         <a href="contactform.php">Contact us</a>
     </div>
@@ -18,7 +17,7 @@
         <div id="content">
             <div id="product-intro-img">
             <?php
-                $product_id = 1;
+                $product_id = $_GET['id'];
                 $sql = "SELECT * FROM iron_product WHERE i_product_id = $product_id;";
 
                 $result = $dbconn -> query($sql);
@@ -39,7 +38,7 @@
                 <div>
                     <div id="product-imgs">
                         <?php
-                            $product_id = 1;
+                            $product_id = $_GET['id'];
                             $sql = "SELECT * FROM iron_product_imgs WHERE i_product_id = $product_id;";
                             $result = $dbconn -> query($sql);
                             $main = true;
@@ -50,6 +49,9 @@
                                 } else {
                                     echo "<img src='img/" . $row['i_img_path'] . "' class='small-img'>";
                                 }
+                            }
+                            if (mysqli_num_rows($result) == 0) {
+                                echo "<p>Sorry, we don't have any pictures for this product</p>";
                             }
                         ?>
                     </div>
@@ -64,7 +66,7 @@
             <div id="product-features">
                 <h1>Features</h1>
                 <?php
-                    $product_id = 1;
+                    $product_id = $_GET['id'];
                     $sql = "SELECT * FROM iron_product WHERE i_product_id = $product_id;";
                     $result = $dbconn -> query($sql);
 
@@ -72,30 +74,6 @@
                         echo "<p>" . $row['i_product_desc'] . "</p>";
                     }
                 ?>
-            </div>
-
-            <div id="product-specs">
-
-                <h1>Specs</h1>
-
-                <table>
-
-                    <?php
-                        $product_id = 1;
-                        $sql = "SELECT * FROM iron_product_spec WHERE i_product_id = $product_id;";
-                        $result = $dbconn -> query($sql);
-
-                        while($row=$result->fetch_assoc()) {
-                            echo "
-                                <tr>
-                                    <td class='spec-name'>" . $row['i_product_spec_name'] . "</td>
-                                    <td>" . $row['i_product_spec_content'] . "</td>
-                                </tr>";
-                        }
-                    ?>
-
-                </table>
-
             </div>
 
             <div id="add2cart">

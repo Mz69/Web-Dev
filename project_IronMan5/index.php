@@ -14,8 +14,11 @@
         else if(isset($_GET["checkout"])) {
             include "includes/checkout.php";
         }
+        else if(isset($_GET["products"])) {
+            include "includes/products.php";
+        }
      
-?>>
+?>
  
    
     <body id="page-top">
