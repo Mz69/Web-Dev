@@ -1,4 +1,12 @@
 <?php
+    if (isset($_POST['numberPurchase'])) {
+        $_SESSION['product_id'] = $_GET['id'];
+        $_SESSION['numberPurchase'] = $_POST['numberPurchase'];
+        header("Location: index.php?products");
+    }
+?>
+
+<?php
     require_once "includes/header.php";
     require_once "db/db.php";
 ?>
@@ -77,14 +85,15 @@
             </div>
 
             <div id="add2cart">
-
-                <div id="num-control">
-                    <button onclick="numChange(-1)">-</button>
-                    <input id="num-purchase" value="1">
-                    <button onclick="numChange(1)">+</button>
-                </div>
-                
-                <button id="btn-add2cart" onclick="postNumPurchase()">Add to Cart</button>
+                <form method="POST">
+                    <div id="num-control">
+                        <button onclick="numChange(-1)">-</button>
+                        <input id="num-purchase" name="numberPurchase" value="1">
+                        <button onclick="numChange(1)">+</button>
+                    </div>
+                    
+                    <button id="btn-add2cart">Add to Cart</button>
+                </form>
 
             </div>
         </div>
