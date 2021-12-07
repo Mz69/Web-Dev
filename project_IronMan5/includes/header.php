@@ -46,15 +46,21 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?products">Products</a>
+                </li>
+				 <li class="nav-item">
+                    <a class="nav-link" href="contactform.php">Contact Us</a>
                 </li>
                 <?php
                     if(isset($_SESSION["email"])) {
                 ?>
                 <li class="nav-item">
                     <a class="nav-link" href="includes/logout.php">Logout</a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="index.php?checkout">Checkout</a>
                 </li>
                 <?php
                     }
@@ -66,9 +72,6 @@
                 <?php
                     }
                 ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?checkout">Checkout</a>
-                </li>
             </ul>
         </div>
     </nav>

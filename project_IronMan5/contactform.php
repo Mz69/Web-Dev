@@ -8,15 +8,15 @@
 
     <div id="contact-form">
         <h1>Contact us</h1>
-        <form method="POST">
-            <div class="form-row">
-                <label>Name:</label>
-                <input type="text" name="name">
-            </div>
-
+        <form action="includes/adminProcess.php" method="POST">
             <div class="form-row">
                 <label>E-mail address:</label>
                 <input type="text" name="e-mail">
+            </div>
+			
+			<div class="form-row">
+                <label>Subject:</label>
+                <input type="text" name="subject">
             </div>
 
             <div class="form-row">
@@ -25,7 +25,7 @@
             </div>
 
             <div>
-                <input type="submit" id="submit-contact" value="Submit">
+                <input name="submit-contact" type="submit" id="submit-contact" value="Submit">
             </div>
         </form>
     </div>
