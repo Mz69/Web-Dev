@@ -10,3 +10,10 @@
     display: block;
     border: 1px solid;
 }
+
+.product p {
+    overflow: hidden;
+    max-width: 20ch;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
