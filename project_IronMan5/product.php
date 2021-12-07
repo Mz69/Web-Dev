@@ -17,8 +17,7 @@
         <a><img></a>
         <a href="#product_intro_img">Overview</a>
         <a href="#product-features">Features</a>
-        <a href="#reviews">Reviews</a>
-        <a href="contactform.php">Contact us</a>
+        <a href="#add2cart">Buy</a>
     </div>
 
     <body>
