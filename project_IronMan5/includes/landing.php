@@ -1,3 +1,8 @@
+<!--
+	The stating layout was downloaded from https://startbootstrap.com/ by Maruf Uzzaman
+	The layout (New Age) was contributed by Star Bootstrap
+	URL: https://startbootstrap.com/theme/new-age	
+-->
 <body id="page-top">
         <!-- Navigation-->
       
