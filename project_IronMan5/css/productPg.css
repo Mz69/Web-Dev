@@ -151,7 +151,7 @@
     float: left;
 }
 
-/* Overriding boostrap styling */
+/* Overriding boostrap styling, had to use important */
 #main-header {
     margin-bottom: 0 !important;
 }
