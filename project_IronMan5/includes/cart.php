@@ -1,25 +1,27 @@
 <?php
     require_once("../db/db.php");
     session_start();
+    
     //Manipulate user Cart
-    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product-id'])) {
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product-id']) && isset($_POST['num-products'])) {
+        $numItems = cleanUserInput($_POST["num-products"]);
         $id = cleanUserInput($_POST["product-id"]);
         //Remove item from cart
         if(isset($_POST['delete'])) {
             if(isset($_SESSION['cart'][$id])) {
-                $_SESSION['cart'][$id] -= 1;
+                $_SESSION['cart'][$id] -= $numItems;
             }
             else {
-                $_SESSION['cart'][$id] = 0;
+                $_SESSION['cart'][$id] = $numItems;
             }
         }
         //Add item to cart
         else {
             if(isset($_SESSION['cart'][$id])) {
-                $_SESSION['cart'][$id] += 1;
+                $_SESSION['cart'][$id] += $numItems;
             }
             else {
-                $_SESSION['cart'][$id] = 1;
+                $_SESSION['cart'][$id] = $numItems;
             }
         } 
     }

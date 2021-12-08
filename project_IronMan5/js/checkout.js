@@ -9,9 +9,10 @@ $( document ).ready(function() {
         {
             "product-id" : prodID,
             "delete" : true,
+            "num-products": 1,
         },
+        //Refresh cart on success
         function() {
-            console.log("success");
             refreshCart();
         });
     });

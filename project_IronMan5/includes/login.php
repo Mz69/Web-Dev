@@ -52,7 +52,7 @@
     <div id="brand-container" class="d-none d-lg-block col-5">
         <p>Brand Image Here<p>
     </div>
-    <form method="POST" action="includes/login.php" class="form-signin rounde col-5 m-auto">
+    <form method="POST" action="includes/login.php" class="form-signin rounded col-5 m-auto">
         <h1 class="h3 mb-3 font-weight-normal">User Login</h1>
         <div class="form-group">
             <label for="inputEmail" class="sr-only">Email address</label>

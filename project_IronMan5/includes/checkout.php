@@ -5,6 +5,7 @@
     die();
   }
 ?>
+ <link href="css/cart.css" rel="stylesheet">
 <div class="container">
   <div class="row">
     <div id="cart" class="col-md-4 order-md-2 mb-4">

@@ -25,17 +25,27 @@ function numChange(x) {
     }
 }
 
-function postNumPurchase() {
+function postNumPurchase(element, prodID) {
     var num = Number(document.getElementById("num-purchase").value);
 
-    var requestData = {numberPurchase: num};
+    // var requestData = {numberPurchase: num};
 
-    $.ajax({
-        url: "product.php",
-        method: "POST",
-        data: requestData,
-        dataType: "json"
+    $.post("includes/cart.php",
+    {
+        "product-id" : Number(prodID),
+        "num-products": num,
     }).done(function(data) {
-        console.log("success");
+        console.log("Added to cart");
     });
+    console.log(element);
+    element.innerHTML = "Items added to cart!";
+
+    // $.ajax({
+    //     url: "includes/cart.php",
+    //     method: "POST",
+    //     data: requestData,
+    //     dataType: "json"
+    // }).done(function(data) {
+    //     console.log("success");
+    // });
 }

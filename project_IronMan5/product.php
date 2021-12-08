@@ -92,7 +92,7 @@
                     <button onclick="numChange(1)">+</button>
                 </div>
                     
-                <button type="submit" form="add-form" id="btn-add2cart">Add to Cart</button>
+                <button type="submit" onclick="postNumPurchase(this, <?php echo $product_id;?>)" id="btn-add2cart">Add to Cart</button>
 
             </div>
         </div>
