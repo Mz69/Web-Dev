@@ -151,6 +151,11 @@
     float: left;
 }
 
+/* Overriding boostrap styling */
+#main-header {
+    margin-bottom: 0 !important;
+}
+
 @media screen and (max-width: 1200px){
     #img-slider {
         width: 100%;
