@@ -31,6 +31,7 @@
 <body class="container">
     <?php
         session_start();
+        // Create empty cart for new user
         if(!isset($_SESSION["cart"])) {
             $_SESSION['cart'] = array();
         }
@@ -50,17 +51,19 @@
 				 <li class="nav-item">
                     <a class="nav-link" href="contactform.php">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?checkout">Checkout</a>
+                </li>
                 <?php
+                    // Logged in user may logout
                     if(isset($_SESSION["email"])) {
                 ?>
                 <li class="nav-item">
                     <a class="nav-link" href="includes/logout.php">Logout</a>
                 </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="index.php?checkout">Checkout</a>
-                </li>
                 <?php
                     }
+                    // Show login if user not logged in
                     else {
                 ?>
                 <li class="nav-item">
@@ -69,7 +72,9 @@
                 <?php
                     }
                 ?>
+                
             </ul>
         </div>
     </nav>
+    
 <main id="pg-main">

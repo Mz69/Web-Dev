@@ -25,9 +25,9 @@ function numChange(x) {
     }
 }
 
+//Adds a given amount of a certain product to the current user's cart
 function postNumPurchase(element, prodID) {
     var num = Number(document.getElementById("num-purchase").value);
-
 
     $.post("includes/cart.php",
     {

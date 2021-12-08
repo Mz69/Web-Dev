@@ -4,7 +4,7 @@
 	 * This session destroy code is used from "Example 1" available on PHP.net
 	 * URL: https://www.php.net/manual/en/function.session-destroy.php
 	 * Authors: PHP.net contributors
-	 * Date: DD-MMM-YYYY (16 Oct 2021)
+	 * Date: (16 Oct 2021)
 	 */
 
 	// Initialize the session.

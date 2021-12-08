@@ -1,12 +1,18 @@
 $( document ).ready(function() {
 
     //Canadian Postal Code Regex
+    //Inspired by: https://stackoverflow.com/questions/1146202/canadian-postal-code-validation
+    //Author: Gordon Gustafson
+    //Date Accessed: December 6, 2021
     let zip = /^([ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ]) ?([0-9][ABCEGHJKLMNPRSTVWXYZ][0-9])$/i;
 
     //At least two words of min length 2 characters
     let minTwoWords = /^[a-zA-Z]{2,40}(?: +[a-zA-Z]{2,40})+$/;
 
-    //Email
+    //Email Rejex
+    //Taken from: https://www.w3resource.com/javascript/form/email-validation.php
+    //Author: Team at W3 schools
+    //Date accessed: December 6, 2021
     let email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     //At least 5 characters
@@ -16,6 +22,7 @@ $( document ).ready(function() {
     let address = /^[0-9]{2,4}(?: +[a-zA-Z]{2,40})+$/;
     
 
+    //Adding event listeners for form input
     $("#name").on('input', function() {
         checkRegex(this, minTwoWords);
     });
@@ -41,6 +48,7 @@ $( document ).ready(function() {
         checkRegex(this, zip);
     });
     
+    //Checks for matching passwords
     $('#confirm-password').on('input', function () {
         if($('#password').val() == $('#confirm-password').val()) {
             $('#message').html('');
@@ -54,6 +62,7 @@ $( document ).ready(function() {
         }
     });
 
+    //Checks that the content of passed element matches the given rejex
     function checkRegex(element, re) {
         console.log(re.test($(element).val()))
         if(re.test($(element).val())) {

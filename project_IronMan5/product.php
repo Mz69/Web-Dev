@@ -2,15 +2,8 @@
     require_once "includes/header.php";
     require_once "db/db.php";
 ?>
-<html>
     <link rel="stylesheet" href="css/productPg.css">
 
-    <div id="product-nav">
-        <a><img></a>
-        <a href="#product_intro_img">Overview</a>
-        <a href="#product-features">Features</a>
-        <a href="#add2cart">Buy</a>
-    </div>
 
     <body>
         <div id="content">
@@ -92,8 +85,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
-
-</html>
 
 <?php
     require_once "includes/footer.php";

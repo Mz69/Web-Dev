@@ -1,4 +1,5 @@
 <?php
+    //Login script
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         session_start();
         require("../db/db.php");
@@ -11,7 +12,7 @@
 		$loginResult = $loginQuery->get_result()->fetch_assoc();
          //Check if email actually exists
 		if(!$loginResult) {
-			header("Location: ../index.php?loginerror=true");
+			header("Location: ../index.php?login&loginerror=true");
 		}
         else {
 			//If email exists, check that password is correct
@@ -45,12 +46,18 @@
     //Show login form otherwise
     else {
         if(isset($_GET['loginerror'])) {
-            echo "<p id='login-error' class='text-danger'>* Wrong username or password. Please try again.</p>";
+            echo "<p id='login-error' class='text-danger text-center'>* Wrong username or password. Please try again.</p>";
         }
 ?>
 <section id="login-form" class="row text-center">
     <div id="brand-container" class="d-none d-lg-block col-5">
-        <p>Brand Image Here<p>
+        <p class="text-center">Brand Image:</p>
+        <!-- Image hosted generously by placeholder.com, a free placeholder image
+             generating service
+             URL: https://via.placeholder.com/300
+             Date Accessed: December 7, 2021
+        -->
+        <img class="mx-auto" src="https://via.placeholder.com/300">
     </div>
     <form method="POST" action="includes/login.php" class="form-signin rounded col-5 m-auto">
         <h1 class="h3 mb-3 font-weight-normal">User Login</h1>

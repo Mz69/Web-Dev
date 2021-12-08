@@ -1,5 +1,5 @@
 <?php
-  //Order processing would go here
+  //Order processing would go here, not implemented
   if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['order'])) {
     session_start();
     $_SESSION['cart'] = array();
@@ -7,19 +7,27 @@
     die();
   }
 ?>
- <link href="css/cart.css" rel="stylesheet">
+<link href="css/cart.css" rel="stylesheet">
+<!-- Checkout template taken and modified from Bootstrap Checkout examples.
+     This template is also used in part in the 'cart.php' file.
+     URL: https://getbootstrap.com/docs/4.5/examples/checkout/
+     Date Accessed: December 2, 2021
+ -->
 <div class="container">
   <div class="row">
     <div id="cart" class="col-md-4 order-md-2 mb-4">
       <!-- Cart contents updated by jQuery-->
     </div>
     <?php
+      //Values autofilled if user is signed in
       $name = (isset($_SESSION["name"]) ? $_SESSION["name"] : "");
       $email = (isset($_SESSION["email"]) ? $_SESSION["email"] : "");
       $address = (isset($_SESSION["address"]) ? $_SESSION["address"] : "");
       $province = (isset($_SESSION["province"]) ? $_SESSION["province"] : "");
       $zip = (isset($_SESSION["zip"]) ? $_SESSION["zip"] : "");
     ?>
+
+    <!-- Start of checkout form -->
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
       <form class="needs-validation" method="POST" action="includes/checkout.php">
@@ -32,7 +40,6 @@
             </div>
           </div>
         </div>
-
         <div class="mb-3">
           <label for="email">Email</label>
           <input type="email" class="form-control" id="email" value="<?php echo $email;?>">
@@ -103,9 +110,11 @@
               Name on card is required
             </div>
           </div>
+          <!-- Some pattern matching for credit card, expiration, and CVV -->
           <div class="col-md-6 mb-3">
             <label for="cc-number">Credit card number</label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+            <input type="text" class="form-control" id="cc-number"
+            pattern="[0-9]{16}" title="16 digit number required" placeholder="" required>
             <div class="invalid-feedback">
               Credit card number is required
             </div>
@@ -114,14 +123,16 @@
         <div class="row">
           <div class="col-md-3 mb-3">
             <label for="cc-expiration">Expiration</label>
-            <input type="text" pattern="[0-9]{2}/?[0-9]{2}" class="form-control" id="cc-expiration" placeholder="" required>
+            <input type="text" pattern="[0-9]{2}/?[0-9]{2}" class="form-control"
+            title="MM/YY format" id="cc-expiration" placeholder="" required>
             <div class="invalid-feedback">
               Expiration date required
             </div>
           </div>
           <div class="col-md-3 mb-3">
             <label for="cc-cvv">CVV</label>
-            <input type="text" pattern = "[0-9]{3}" class="form-control" id="cc-cvv" placeholder="" required>
+            <input type="text" pattern = "[0-9]{3}" class="form-control" id="cc-cvv" placeholder=""
+            title="3 digit format" required>
             <div class="invalid-feedback">
               Security code required
             </div>
@@ -130,6 +141,7 @@
         <hr class="mb-4">
         <button name="order" id="order" class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
       </form>
+      <!-- End of checkout form -->
     </div>
   </div>
   <script src="js/checkout.js"></script>
