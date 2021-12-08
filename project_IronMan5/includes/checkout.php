@@ -1,6 +1,8 @@
 <?php
   //Order processing would go here
   if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['order'])) {
+    session_start();
+    $_SESSION['cart'] = array();
     header("Location: ../index.php?order=True");
     die();
   }
@@ -20,7 +22,7 @@
     ?>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate method="POST" action="includes/checkout.php">
+      <form class="needs-validation" method="POST" action="includes/checkout.php">
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="name">Name</label>
@@ -51,12 +53,8 @@
           <div class="col-md-5 mb-3">
             <label for="country">Country</label>
             <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Canada</option>
-              <!-- <option>Canada</option> -->
+              <option selected>Canada</option>
             </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
           </div>
           <div class="col-md-4 mb-3">
             <label for="state">Province</label>
@@ -81,7 +79,7 @@
           </div>
           <div class="col-md-3 mb-3">
             <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" value="<?php echo $zip;?>" required>
+            <input type="text" class="form-control"  id="zip" value="<?php echo $zip;?>" required>
             <div class="invalid-feedback">
               Zip code required.
             </div>
@@ -90,10 +88,9 @@
         <hr class="mb-4">
 
         <h4 class="mb-3">Payment</h4>
-
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+            <input id="credit"  name="paymentMethod" type="radio" class="custom-control-input" checked required>
             <label class="custom-control-label" for="credit">Credit card</label>
           </div>
         </div>
@@ -117,21 +114,21 @@
         <div class="row">
           <div class="col-md-3 mb-3">
             <label for="cc-expiration">Expiration</label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+            <input type="text" pattern="[0-9]{2}/?[0-9]{2}" class="form-control" id="cc-expiration" placeholder="" required>
             <div class="invalid-feedback">
               Expiration date required
             </div>
           </div>
           <div class="col-md-3 mb-3">
             <label for="cc-cvv">CVV</label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+            <input type="text" pattern = "[0-9]{3}" class="form-control" id="cc-cvv" placeholder="" required>
             <div class="invalid-feedback">
               Security code required
             </div>
           </div>
         </div>
         <hr class="mb-4">
-        <button name="order" class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
+        <button name="order" id="order" class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
       </form>
     </div>
   </div>

@@ -22,6 +22,5 @@ $( document ).ready(function() {
         $.get("includes/cart.php", function(data) {
             $("#cart").html(data);
         });
-
     }
 });

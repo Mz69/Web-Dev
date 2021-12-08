@@ -1,12 +1,4 @@
 <?php
-    if (isset($_POST['numberPurchase'])) {
-        $_SESSION['product_id'] = $_GET['id'];
-        $_SESSION['numberPurchase'] = $_POST['numberPurchase'];
-        header("Location: index.php?checkout");
-    }
-?>
-
-<?php
     require_once "includes/header.php";
     require_once "db/db.php";
 ?>

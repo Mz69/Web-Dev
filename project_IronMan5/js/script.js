@@ -28,7 +28,6 @@ function numChange(x) {
 function postNumPurchase(element, prodID) {
     var num = Number(document.getElementById("num-purchase").value);
 
-    // var requestData = {numberPurchase: num};
 
     $.post("includes/cart.php",
     {
@@ -37,15 +36,6 @@ function postNumPurchase(element, prodID) {
     }).done(function(data) {
         console.log("Added to cart");
     });
-    console.log(element);
     element.innerHTML = "Items added to cart!";
-
-    // $.ajax({
-    //     url: "includes/cart.php",
-    //     method: "POST",
-    //     data: requestData,
-    //     dataType: "json"
-    // }).done(function(data) {
-    //     console.log("success");
-    // });
+    document.getElementById("num-purchase").value = 0;
 }

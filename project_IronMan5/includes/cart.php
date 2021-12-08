@@ -34,7 +34,7 @@
         <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="">Cart</span>
         </h4>
-        <ul class='list-group mb-3'>
+        <ul id="cart-list" class='list-group mb-3'>
         CARTHEADER;
         foreach($_SESSION['cart'] as $key => $value) {
             $cartQuery->bind_param("i", $key);

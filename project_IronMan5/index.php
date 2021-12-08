@@ -3,7 +3,8 @@
 ?> 
 <?php
         if(isset($_GET["order"])) {
-            echo "<h2 class='text-center'>Thank you for your order</h2>";
+            echo "<h2 class='text-center'>Thank you for your order!</h2>";
+            include "includes/landing.php";
         }
         else if(isset($_GET["create"])) {
             include "includes/createAccount.php";
